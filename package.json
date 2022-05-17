@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "app.js",
+    "build": "node_modules/.bin/netlify-lambda build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

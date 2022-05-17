@@ -1,16 +1,18 @@
 const express = require("express");
 const serverless = require("serverless-http");
+const app = express()
 
-const app = express();
-const router = express.Router();
+app.use(express.json())
 
-router.get("/", (req, res) => {
-  res.json({
-    hello: "Testing Mode ----------------->> Netlify Express...! "
-  });
-});
+const userRoute = require("./routes/user")
 
-app.use(`/.netlify/functions/api`, router);
+app.use(userRoute)
+
+
+app.listen(process.env.PORT || 3000, ()=>{
+  console.log("Server Starting...!")
+})
+
 
 module.exports = app;
 module.exports.handler = serverless(app);
